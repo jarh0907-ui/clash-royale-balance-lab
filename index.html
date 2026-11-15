@@ -82,6 +82,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Lilita+One&amp;display=swap">
 <link rel="stylesheet" href="./assets/card-popup-v19.css?v=1901">
 <link rel="stylesheet" href="./assets/score-readability-v110.css?v=1101">
+<link rel="stylesheet" href="./assets/deck-coach-v120.css?v=1201">
 <link rel="stylesheet" href="./assets/interface-polish-v111.css?v=1111">
 </head>
 <body>
@@ -352,7 +353,7 @@ function deckCounterReason(d,other){
 function renderDeckMatch(d,side){const rows=allDecks().filter(x=>x.id!==d.id).map(x=>({...x,_s:deckMatchHeuristic(d,x)})).filter(x=>side==='hard'?x._s<0:x._s>0).sort((a,b)=>side==='hard'?a._s-b._s:b._s-a._s).slice(0,4);return rows.length?rows.map(x=>`<div class="deck-match-row"><div><span>${esc(x.name)}</span><small>${esc(x.kind)} · ${esc(side==='hard'?deckCounterReason(d,x):deckCounterReason(x,d))}</small></div><button class="btn sm" data-action="deck-view" data-id="${esc(x.id)}">보기</button></div>`).join(''):'<div class="deck-muted">비교할 대표 덱이 부족합니다. 실전 상대전적을 별도로 수집해야 합니다.</div>'}
 function renderDeckDetail(d){if(!d)return `<section class="panel pad deck-detail"><h2>덱 분석</h2><p class="muted">왼쪽 목록에서 덱을 선택하면 운용법과 카운터 대응을 확인할 수 있습니다.</p></section>`;
  const g=DECK_KIND_GUIDES[d.kind]||DECK_KIND_GUIDES['컨트롤'];const rec=deckStatsFor(d);const num=deckBattleCount(d);return `<section class="panel pad deck-detail" id="deckDetail"><div class="deck-intro"><div><div class="eyebrow">DECK STRATEGY</div><h2>${esc(d.name)}</h2></div><button class="btn sm" data-action="deck-close">닫기</button></div>${deckImageRow(d)}<div class="deck-tagline">${deckKinds(d)}</div>${deckNumbers(d)}<div class="deck-note">${rec?`덱별 전적 출처: ${esc(deckRecordLabel(d))}. 표본 ${fmt(num)}회. ${num<100?'⚠ 표본 부족으로 승률 변동성이 큽니다.':''}`:'덱별 픽률·승률 미수집: 값을 만들어 표시하지 않습니다. 카드 평균 통계와 별개입니다.'} 픽률은 <b>전체 대전 수(분모)</b>를 함께 등록했을 때만 계산됩니다.</div>
- <div class="deck-guide" style="margin-top:16px"><div class="deck-guide-section"><h3>덱 유형 / 핵심 운영</h3><p>${esc(d.style||g.desc)}</p></div><div class="deck-guide-section"><h3>① 초반 1배 엘릭서</h3><p>${esc(g.early)}</p></div><div class="deck-guide-section"><h3>② 2배·연장전</h3><p>${esc(g.double)}</p></div><div class="deck-guide-section"><h3>③ 수비와 역공</h3><p>${esc(g.defense)}</p></div><div class="deck-guide-section"><h3>④ 취약점과 대응</h3><p>${esc(g.weak)} ${esc(g.tips)}</p></div></div>
+ <div class="deck-guide-section" style="margin-top:16px">${renderRecentDeckCoach(d)}</div>
  <div class="deck-guide-section" style="margin-top:16px"><h3 style="color:#ffb4be">⚔ 불리할 가능성이 있는 카운터 덱</h3><p class="deck-subhead">전략·카드 상성 기반 <b>추정</b>이며 실전 상대전적 또는 승률이 아닙니다.</p><div class="deck-match">${renderDeckMatch(d,'hard')}</div></div>
  <div class="deck-guide-section" style="margin-top:16px"><h3 style="color:#c4f2ac">✓ 상대적으로 유리할 가능성이 있는 덱</h3><p class="deck-subhead">전략 추정. 카드 레벨과 운영 실력에 따라 바뀔 수 있습니다.</p><div class="deck-match">${renderDeckMatch(d,'easy')}</div></div>
  <div class="deck-guide-section" style="margin-top:17px"><h3>실제 승률·픽률 기록하기</h3><p class="deck-subhead">이 덱의 기록(승·패·무·해당 모드 전체 대전 수)을 입력하면 위 수치에 반영됩니다. 저장 위치는 현재 브라우저입니다.</p><form class="deck-stat-form" id="deckStatForm" data-id="${esc(d.id)}"><div class="field"><label>승리</label><input type="number" name="wins" min="0" step="1" value="${rec?.wins??''}" placeholder="0"></div><div class="field"><label>패배</label><input type="number" name="losses" min="0" step="1" value="${rec?.losses??''}" placeholder="0"></div><div class="field"><label>무승부</label><input type="number" name="draws" min="0" step="1" value="${rec?.draws??''}" placeholder="0"></div><div class="field" style="grid-column:span 3"><label>전체 비교 대전 수 (선택) · 같은 기간/모드의 전체 경기</label><input type="number" name="totalGames" min="0" step="1" value="${rec?.totalGames??''}" placeholder="예: 100000"></div><div class="field" style="grid-column:span 3"><label>집계 기준 또는 출처 메모</label><input type="text" name="scope" maxlength="160" value="${esc(rec?.scope||'')}" placeholder="예: 랭크전 7일 / 2026-11-15"></div><button class="btn primary" type="submit" style="grid-column:span 2">기록 저장</button><button class="btn" type="button" data-action="deck-reset-record" data-id="${esc(d.id)}">초기값</button></form></div>
@@ -380,5 +381,6 @@ render();
 <script src="./assets/card-ui-v16.js?v=1.6" defer></script>
 <script src="./assets/card-popup-v19.js?v=1901" defer></script>
 <script src="./assets/score-readability-v110.js?v=1101" defer></script>
+<script src="./assets/deck-coach-v120.js?v=1201" defer></script>
 
 </body></html>
