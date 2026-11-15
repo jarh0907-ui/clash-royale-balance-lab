@@ -1,0 +1,51 @@
+/* v1.21: targeted small-screen readability improvements. Desktop layout unchanged. */
+@media (max-width:620px){
+  .deck-entry .deck-intro,.deck-detail .deck-intro{gap:9px;align-items:flex-start}
+  .deck-entry .deck-intro>div,.deck-detail .deck-intro>div{min-width:0;flex:1 1 170px}
+  .deck-entry .deck-intro h3,.deck-detail .deck-intro h2{overflow-wrap:anywhere}
+  .deck-entry [data-action="deck-view"],.deck-detail [data-action="deck-close"],
+  .cr-counter-card .cr-counter-foot [data-action="deck-view"],.deck-btnline .btn{
+    min-height:42px;max-width:100%;white-space:normal;text-align:center;line-height:1.3
+  }
+  .deck-picker-filter input,.deck-picker-filter select,.deck-stat-form input,
+  .filter-grid input,.filter-grid select{
+    font-size:16px!important;min-height:43px;min-width:0
+  }
+  .deck-stat-form .field{min-width:0}
+  .deck-stat-form .field input{width:100%}
+  .cr-counter-card .cr-counter-why li{overflow-wrap:anywhere}
+  .cr-counter-card .cr-counter-foot{align-items:stretch}
+  .cr-counter-card .cr-counter-foot [data-action="deck-view"]{flex:1 1 160px}
+  .cr-coach-source{min-height:40px;line-height:1.4}
+  .bottomnav button{min-height:44px}
+}
+@media (max-width:520px){
+  /* A single row of eight cards becomes too narrow on phones: use 4 × 2. */
+  .deck-entry .deck-cards,.deck-detail>.deck-cards{
+    grid-template-columns:repeat(4,minmax(0,1fr));gap:9px 7px
+  }
+  .deck-entry .deck-cardpic .avatar,.deck-detail>.deck-cards .deck-cardpic .avatar{
+    width:100%;height:auto;aspect-ratio:3/4;max-width:none;border-radius:7px
+  }
+  .deck-entry .deck-smallname,.deck-detail>.deck-cards .deck-smallname{
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    overflow:hidden;max-height:none;min-height:2.5em;
+    font-size:10px;line-height:1.25;color:#c3d5ea;margin-top:5px;word-break:keep-all
+  }
+  .deck-entry .deck-cardpic .mini-cost,.deck-detail>.deck-cards .mini-cost{
+    width:19px;height:19px;font-size:11px;line-height:19px
+  }
+  .deck-detail .deck-numbers{gap:7px 10px;line-height:1.5}
+  .cr-counter-card .deck-cards{gap:9px 6px}
+  .cr-counter-card .deck-smallname{font-size:10px;line-height:1.3;min-height:2.5em}
+  .cr-coach-phases{gap:8px}
+  .cr-coach-phase{padding:11px 12px}
+}
+@media (max-width:360px){
+  .deck-entry .deck-cards,.deck-detail>.deck-cards{gap:8px 4px}
+  .deck-entry .deck-smallname,.deck-detail>.deck-cards .deck-smallname{font-size:9.5px}
+  .deck-entry .deck-intro>div,.deck-detail .deck-intro>div{flex-basis:130px}
+  .deck-summary .panel{padding:10px}
+  .cr-counter-card .deck-cards{gap:8px 4px}
+  .deck-stat-form{column-gap:5px}
+}
