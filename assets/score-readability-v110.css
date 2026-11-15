@@ -1,0 +1,69 @@
+
+/* v1.10 — clear player-facing labels for collected statistics and weighted performance score */
+.cr-v110-guide{margin:0 0 14px;background:linear-gradient(135deg,#18304f,#14253e);border:1px solid #41628b;border-radius:13px;color:#edf7ff;box-shadow:0 3px 13px #0002;overflow:hidden}
+.cr-v110-guide summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;padding:12px 15px;min-height:50px}
+.cr-v110-guide summary::-webkit-details-marker{display:none}
+.cr-v110-guide summary:after{content:'⌄';font-size:20px;color:#92ceeb;line-height:1;transition:transform .2s}
+.cr-v110-guide[open] summary:after{transform:rotate(180deg)}
+.cr-v110-guide summary strong{font-size:14px;font-weight:850;display:block}
+.cr-v110-guide summary small{display:block;color:#aabfda;font-size:11px;line-height:1.4;margin-top:2px}
+.cr-v110-guide .cr-v110-guide-inner{padding:4px 15px 15px;border-top:1px solid #2d4769;font-size:12px;line-height:1.7;color:#d0e2f6}
+.cr-v110-guide .cr-v110-formula{background:#0e1f36;border-radius:8px;border:1px solid #365676;padding:9px 11px;margin:9px 0;color:#f8e0a8;font-weight:900;font-size:13px}
+.cr-v110-guide .cr-v110-guide-inner p{margin:6px 0}
+.cr-v110-guide .cr-v110-note{color:#9fb4ce;font-size:11px}
+.cr-v110-score-inline{display:flex;align-items:center;justify-content:center;gap:5px;padding:4px 6px 8px;border-top:1px solid #273b57;font-size:10px;color:#a8c7e4}
+.cr-v110-score-inline strong{color:#f3dc95;font-size:12px;font-variant-numeric:tabular-nums}
+.cr-card-tile .cr-card-quick{grid-template-columns:repeat(2,minmax(0,1fr));}
+.cr-card-tile .cr-card-quick div{min-width:0}
+.cr-v110-unit{font-size:11px;font-weight:700;opacity:.8}
+#detailDrawer.cr-v19-panel .cr-v110-performance{
+  padding:12px;background:linear-gradient(180deg,#e5f0fd,#cbdff5);border:4px solid #accbea;
+  border-radius:13px;color:#223c5e;margin:0 0 12px;box-shadow:0 2px 0 #426b98;
+  font-family:system-ui,-apple-system,"Malgun Gothic",sans-serif
+}
+#detailDrawer.cr-v19-panel .cr-v110-performance h3{margin:0;color:#172f58;font-size:17px;letter-spacing:-.4px}
+#detailDrawer.cr-v19-panel .cr-v110-performance p{margin:5px 0 0}
+#detailDrawer.cr-v19-panel .cr-v110-performance-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #afc6e2;padding-bottom:11px}
+#detailDrawer.cr-v19-panel .cr-v110-score-title{font-size:16px;font-weight:950;color:#17365e}
+#detailDrawer.cr-v19-panel .cr-v110-score-sub{font-size:11px;line-height:1.5;color:#4c668b}
+#detailDrawer.cr-v19-panel .cr-v110-scorebig{display:flex;align-items:baseline;gap:3px;white-space:nowrap}
+#detailDrawer.cr-v19-panel .cr-v110-scorebig b{font-size:32px;font-weight:1000;color:#1553a0;font-variant-numeric:tabular-nums;letter-spacing:-1px;line-height:1}
+#detailDrawer.cr-v19-panel .cr-v110-scorebig span{color:#57718f;font-size:13px;font-weight:800}
+#detailDrawer.cr-v19-panel .cr-v110-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:11px 0}
+#detailDrawer.cr-v19-panel .cr-v110-mode{background:#fff;border:1px solid #acc5e1;border-radius:10px;overflow:hidden;box-shadow:0 2px 0 #b0c7e2}
+#detailDrawer.cr-v19-panel .cr-v110-mode h4{background:#285690;color:#fff;font-size:12px;letter-spacing:-.2px;padding:7px 10px;margin:0;font-weight:900}
+#detailDrawer.cr-v19-panel .cr-v110-mode:nth-child(2) h4{background:#5b4599}
+#detailDrawer.cr-v19-panel .cr-v110-mode-body{display:grid;grid-template-columns:1fr 1fr;padding:10px 8px;gap:6px}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric{text-align:center;border-right:1px solid #e4eaf2}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric:last-child{border:0}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric span{display:block;font-size:10px;font-weight:800;color:#57718d}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric strong{display:block;font-weight:1000;font-size:22px;color:#164d90;line-height:1.3;font-variant-numeric:tabular-nums}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric strong.usage{color:#694b97}
+#detailDrawer.cr-v19-panel .cr-v110-mode-rate{background:#eef3fb;border-top:1px solid #dce6f3;padding:7px 9px;font-size:11px;color:#526888;font-weight:750}
+#detailDrawer.cr-v19-panel .cr-v110-mode-rate b{color:#273a66;font-weight:950}
+#detailDrawer.cr-v19-panel .cr-v110-formula{
+  display:flex;gap:8px;align-items:flex-start;border:1px solid #a9c7e6;border-radius:9px;
+  padding:10px;background:#edf7ff;color:#1e466e;font-size:12px;line-height:1.55;word-break:keep-all
+}
+#detailDrawer.cr-v19-panel .cr-v110-formula strong{display:block;margin-bottom:2px;font-size:12px;color:#1c3f77}
+#detailDrawer.cr-v19-panel .cr-v110-formula code{font-family:inherit;font-weight:950;color:#744f20;font-variant-numeric:tabular-nums}
+#detailDrawer.cr-v19-panel .cr-v110-scope{font-size:10px;line-height:1.5;color:#536a87;padding-top:8px}
+#detailDrawer.cr-v19-panel .cr-v110-performance button:focus-visible{outline:3px solid #ecc751}
+.cr-v110-grid-heading{font-size:13px;color:#dfeafa}
+@media(max-width:680px){
+ .cr-v110-guide summary{padding:10px 11px}
+ .cr-v110-guide summary strong{font-size:13px}
+ .cr-v110-score-inline{font-size:9px;flex-wrap:wrap;padding:3px 3px 7px}
+ .cr-v110-score-inline strong{font-size:11px}
+ #detailDrawer.cr-v19-panel .cr-v110-performance{padding:10px;margin:0 0 9px}
+ #detailDrawer.cr-v19-panel .cr-v110-scorebig b{font-size:27px}
+ #detailDrawer.cr-v19-panel .cr-v110-modes{gap:6px}
+ #detailDrawer.cr-v19-panel .cr-v110-mode h4{padding:6px 7px}
+ #detailDrawer.cr-v19-panel .cr-v110-mode-body{padding:8px 4px}
+ #detailDrawer.cr-v19-panel .cr-v110-mode-metric strong{font-size:18px}
+}
+@media(max-width:360px){
+ #detailDrawer.cr-v19-panel .cr-v110-score-sub{font-size:10px}
+ #detailDrawer.cr-v19-panel .cr-v110-modes{grid-template-columns:1fr}
+ #detailDrawer.cr-v19-panel .cr-v110-mode-metric strong{font-size:20px}
+}
