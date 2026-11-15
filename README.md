@@ -82,3 +82,14 @@ v1.5 — 덱 연구소(카드 1~3장 선택, 운용법, 상성 후보) 추가.
 - 카드 목록의 이미지·이름·랭크 승률·픽률·자체 계산 점수 사이 간격과 대비를 조정했습니다.
 - PC, 모바일 390px·320px 미리보기에서 카드 정보창 중앙 정렬과 화면 폭 안 표시를 확인했습니다. 기존 데이터와 통계 계산·덱 검색 기능은 변경하지 않았습니다.
 - 추가 스타일: `assets/interface-polish-v111.css`. 캐시 갱신 URL: `?v=111`.
+
+## v1.20 최근 메타 기반 덱 운용 및 카운터 시각화 (2026-11-15)
+
+- **내장 대표 덱 40개**에 카드 조합 기반 운영 가이드: 핵심 공격 콤보, 수비 카드 보존, 초반, 2배 엘릭서, 수비→역공, 실수 주의
+- **2026-10-16~2026-11-15** 기간에 나온 전략 기사와 메타 보고서의 날짜·링크를 덱별 출처로 제공
+- 참고 자료: TrophyCoach의 [Hog EQ](https://trophycoach.com/guides/how-to-play-hog-earthquake-deck), [Log Bait](https://trophycoach.com/guides/how-to-play-log-bait-deck), [Mortar](https://trophycoach.com/guides/how-to-play-mortar-cycle-deck), [Royal Hogs](https://trophycoach.com/guides/how-to-play-royal-hogs-deck), [PEKKA Bridge Spam](https://trophycoach.com/guides/how-to-play-pekka-bridge-spam-deck) (각 2026-10-22), 2026-11-12 메타 변화 보고서
+- **카운터 덱과 상대적으로 유리한 덱을 8장 카드 이미지로 표시**하고 카드 조합의 상성 이유 및 대응 방법 제시
+- 상성 추천은 **카드 상호작용 규칙 기반 추정**이며 덱간 실측 승률 또는 공식 카운터 데이터가 아닙니다.
+- 카드 필터를 유지한 상태에서도 카운터 덱 상세로 전환할 수 있도록 수정
+- 정확히 같은 8장 구성의 최근 전략을 확인하지 못한 덱은 최근 유형 메타를 참고하고 운영 설명은 카드 구성에서 추론한 것임을 표시합니다. 특정 유튜브 영상을 직접 분석했다고 주장하지 않습니다.
+- 신규 파일: assets/deck-coach-v120.js, assets/deck-coach-v120.css. 실시간 자동 갱신되지 않음.
