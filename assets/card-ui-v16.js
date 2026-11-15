@@ -45,7 +45,8 @@
         '<span class="cr-art-name">'+safe(label(c))+'</span>'+
         '<span class="cr-card-caption">'+safe(c.type)+(c.form!=='기본'?' · '+safe(c.form):'')+'</span>'+
       '</button>'+
-      '<div class="cr-card-quick"><div><small>랭크 승률</small><strong>'+fmt(c.rankWin)+'%</strong></div><div><small>실전 지수</small><strong>'+fmt(c.practical,1)+'</strong></div></div>'+
+      '<div class="cr-card-quick"><div><small>랭크 승률</small><strong>'+fmt(c.rankWin)+'%</strong></div><div><small>랭크 픽률</small><strong>'+fmt(c.rankUse)+'%</strong></div></div>'+ 
+      '<div class="cr-v110-score-inline" title="실전 성과 점수 = 랭크 평점의 35% + GC 평점의 65%"><span>실전 성과</span><strong>'+fmt(c.practical,1)+'점</strong><span>· 자체 계산</span></div>'+
       '<div class="cr-card-actions"><button type="button" data-action="compare" data-card="'+safe(c.en)+'">'+(state.compares.includes(c.en)?'✓ 비교중':'+ 비교')+'</button>'+
       '<button type="button" data-action="deck-from-card" data-card="'+safe(c.en)+'">덱 찾기</button></div>'+
     '</article>';
