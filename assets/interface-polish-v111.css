@@ -1,0 +1,104 @@
+
+/* v1.11 — UI-only polish, gameplay and statistics unchanged */
+.cr-gallery{gap:13px 12px;align-items:stretch}
+.cr-card-tile{display:flex;flex-direction:column;border:1px solid #354f73;border-radius:13px;background:#162641;box-shadow:0 5px 15px #0209173b;transition:transform .17s ease,border-color .17s ease,box-shadow .17s ease}
+.cr-card-tile:hover{transform:translateY(-3px);border-color:#7bafde;box-shadow:0 9px 23px #01061466}
+.cr-card-tile:focus-within{border-color:#a7daff;box-shadow:0 0 0 2px #b4e2f3,0 9px 23px #0006}
+.cr-card-art{cursor:pointer}
+.cr-art-frame{background:radial-gradient(ellipse at 50% 24%,#3d638e,#1d3256 62%,#12203a)!important}
+.cr-art-frame img{display:block;object-fit:contain;filter:drop-shadow(0 4px 6px #0004)}
+.cr-art-name{min-height:42px;line-height:1.25;font-size:13px;padding:7px 6px 3px;font-weight:850;letter-spacing:-.25px}
+.cr-card-caption{color:#b1c3db;font-size:10px;padding-bottom:8px}
+.cr-card-quick{margin-top:auto;background:#0f2038;border-top:1px solid #2a4060!important;gap:0!important;padding:6px 5px!important}
+.cr-card-quick div{background:transparent!important;padding:4px 2px!important;border-radius:0!important}
+.cr-card-quick div+div{border-left:1px solid #294364}
+.cr-card-quick small{font-size:10px!important;color:#a7b9d3}
+.cr-card-quick strong{display:block;font-size:15px;color:#e5f5ff!important;line-height:1.45;font-variant-numeric:tabular-nums}
+.cr-v110-score-inline{background:#0f2038;border-top:1px solid #263d5b!important;padding:5px 4px 7px!important;gap:5px;color:#adbfda!important;font-size:10px}
+.cr-v110-score-inline strong{color:#ffd37e!important;font-size:12px!important}
+.cr-card-actions{padding:7px!important;background:#12233b;gap:6px!important}
+.cr-card-actions button{min-width:0;border:1px solid #456589!important;border-radius:7px!important;min-height:31px;font-size:11px!important;background:#244267!important;color:#e6f4ff!important;transition:background .12s}
+.cr-card-actions button:hover{background:#386a98!important}
+.cr-card-actions button:focus-visible{outline:2px solid #ebda8b;outline-offset:2px}
+.cr-view-toggle{margin:5px 0 12px;gap:8px}
+.cr-view-toggle small{font-size:12px;line-height:1.45;color:#b4c8e0}
+.cr-view-buttons{border-color:#365473}
+.cr-view-buttons button{cursor:pointer}
+.cr-view-buttons button[aria-pressed="true"]{background:#315e85;color:#fff}
+.cr-v110-guide{box-shadow:none;background:#172a44;border-color:#344f73}
+.cr-v110-guide summary{min-height:46px}
+.cr-v110-guide summary strong{color:#f0f6ff}
+.cr-v110-guide summary small{color:#a8bdd8}
+/* Overlay: darker navy game frame, comfortable spacing, readable Korean text */
+#detailDrawer.cr-v19-panel{width:min(486px,calc(100vw - 24px))!important;max-width:486px!important;background:#22336e!important;border-color:#607abf!important;border-radius:16px!important;box-shadow:0 0 0 2px #101b45,0 4px 0 #111e44,0 22px 62px #000a,inset 0 2px #9fc1ff47!important;color:#fff;-webkit-font-smoothing:antialiased}
+#detailDrawer.cr-v19-panel .cr-game-hero{grid-template-columns:118px minmax(0,1fr)!important;gap:17px!important;min-height:170px!important;margin-bottom:11px!important}
+#detailDrawer.cr-v19-panel .cr-game-picture{height:154px!important;width:118px!important;border-color:#b3d3fa!important}
+#detailDrawer.cr-v19-panel .cr-game-info{justify-content:flex-start!important;min-width:0}
+#detailDrawer.cr-v19-panel .cr-game-info h2{min-height:0!important;margin-top:5px!important;font-family:'Jua',system-ui,sans-serif!important;font-size:clamp(20px,3vw,26px)!important;font-weight:900!important;line-height:1.25!important;letter-spacing:-.65px!important;text-shadow:0 2px 1px #0b1843!important;-webkit-text-stroke:0 transparent!important;overflow-wrap:anywhere}
+#detailDrawer.cr-v19-panel .cr-game-info .cr-level{font-family:'Jua',system-ui,sans-serif!important;font-size:17px!important;font-weight:900!important;color:#ffe18a!important;letter-spacing:0!important;text-shadow:0 1px 1px #18234d!important;margin-top:5px!important}
+#detailDrawer.cr-v19-panel .cr-v19-badges{margin-top:auto!important;padding-top:22px;gap:7px}
+#detailDrawer.cr-v19-panel .cr-v19-badge{height:51px;border:1px solid #7b93bc;border-radius:8px;box-shadow:0 2px 0 #0a1640}
+#detailDrawer.cr-v19-panel .cr-v19-badge-label{font-family:'Jua',system-ui,sans-serif;font-weight:900;height:23px;padding:4px 2px 2px;font-size:11px;line-height:17px}
+#detailDrawer.cr-v19-panel .cr-v19-badge-value{font-family:'Jua',system-ui,sans-serif;font-weight:900;font-size:15px;line-height:20px;padding:3px 2px 2px;text-shadow:0 1px 1px #080f29}
+#detailDrawer.cr-v19-panel .cr-v19-paper{border:4px solid #a3bddb;padding:9px 8px 34px;min-height:284px;border-radius:15px;background:#e5edf7;box-shadow:0 0 0 2px #223b77,0 3px 1px #111e48,inset 0 2px #f7fdff}
+#detailDrawer.cr-v19-panel .cr-game-stats{gap:5px 7px!important}
+#detailDrawer.cr-v19-panel .cr-game-stat{height:46px!important;min-height:46px!important;grid-template-columns:35px minmax(0,1fr)!important;gap:0 7px!important;padding:3px!important;border-radius:8px!important;background:#cfdded!important;border-bottom-color:#a5b9ce!important}
+#detailDrawer.cr-v19-panel .cr-v19-iconbox{width:34px;height:35px;border-radius:6px;border-color:#6a7f9d;background:linear-gradient(#304358,#152336)}
+#detailDrawer.cr-v19-panel .cr-v19-stattext{gap:2px!important;min-width:0;overflow:hidden}
+#detailDrawer.cr-v19-panel .cr-game-stat span:not(.cr-v19-iconbox):not(.cr-v19-stattext){font-family:system-ui,'Malgun Gothic',sans-serif!important;font-size:10.5px!important;color:#435670!important;line-height:1.1!important;letter-spacing:-.25px;font-weight:780!important;text-shadow:none!important}
+#detailDrawer.cr-v19-panel .cr-game-stat strong{font-family:'Jua',system-ui,'Malgun Gothic',sans-serif!important;font-size:17px!important;font-weight:900!important;line-height:1.1!important;color:#213b5b!important;text-shadow:none!important;-webkit-text-stroke:0 transparent!important;letter-spacing:-.3px!important;margin:0!important;white-space:normal!important;overflow-wrap:anywhere!important}
+#detailDrawer.cr-v19-panel .cr-v19-pips{background:#cadcf0;border-color:#b4cee6;height:30px}
+#detailDrawer.cr-v19-panel .cr-v19-pip:before{transition:background .14s,transform .14s}
+#detailDrawer.cr-v19-panel .cr-v19-pip:hover:before{background:#7699bc;transform:scale(1.1)}
+#detailDrawer.cr-v19-panel .cr-v19-pip[aria-selected='true']:before{background:linear-gradient(#ffe989,#efad29);border-color:#5f7794}
+#detailDrawer.cr-v19-panel .cr-v19-controls{margin:14px 5px 0;gap:11px}
+#detailDrawer.cr-v19-panel .cr-v19-action{min-height:38px;min-width:0;flex:1;font-family:'Jua',system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:-.25px}
+#detailDrawer.cr-v19-panel .cr-v19-data-note{line-height:1.45;font-size:10px;margin-top:12px;color:#b2c3de}
+#detailDrawer.cr-v19-panel .cr-v19-tabs{gap:5px}
+#detailDrawer.cr-v19-panel .cr-v19-tab{font-family:'Jua',system-ui,sans-serif;font-size:12px;padding:5px 14px}
+#detailDrawer.cr-v19-panel .cr-v19-story{font-family:'Jua',system-ui,sans-serif;font-size:16px;line-height:1.6;color:#344b68}
+#detailDrawer.cr-v19-panel .cr-v19-story strong{font-size:18px}
+#detailDrawer.cr-v19-panel .cr-v110-performance{padding:11px;border:2px solid #b2c8df;border-radius:12px;box-shadow:none}
+#detailDrawer.cr-v19-panel .cr-v110-score-title{font-size:15px}
+#detailDrawer.cr-v19-panel .cr-v110-scorebig b{font-size:30px}
+#detailDrawer.cr-v19-panel .cr-v110-modes{gap:8px;margin:10px 0}
+#detailDrawer.cr-v19-panel .cr-v110-mode{border-color:#acc2df}
+#detailDrawer.cr-v19-panel .cr-v110-mode-metric strong{font-family:'Jua',system-ui,sans-serif;font-size:21px}
+#detailDrawer.cr-v19-panel .cr-v110-formula{background:#f5f9ff}
+@media(max-width:680px){
+ .cr-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .cr-art-name{min-height:43px;font-size:11.5px}
+ .cr-card-quick small{font-size:9px!important}
+ .cr-card-quick strong{font-size:13px!important}
+ .cr-card-actions{padding:5px!important;gap:4px!important}
+ .cr-card-actions button{font-size:10px!important;min-height:30px}
+ #detailDrawer.cr-v19-panel{width:calc(100vw - 16px)!important;padding:0 8px 10px!important;max-height:calc(100dvh - 16px)!important;border-width:2px!important}
+ #detailDrawer.cr-v19-panel .cr-game-hero{grid-template-columns:99px minmax(0,1fr)!important;gap:12px!important;min-height:149px!important}
+ #detailDrawer.cr-v19-panel .cr-game-picture{width:99px!important;height:136px!important}
+ #detailDrawer.cr-v19-panel .cr-game-info h2{font-size:clamp(17px,4.9vw,22px)!important;margin-top:2px!important}
+ #detailDrawer.cr-v19-panel .cr-game-info .cr-level{font-size:14px!important;margin-top:2px!important}
+ #detailDrawer.cr-v19-panel .cr-v19-badges{padding-top:11px;gap:5px}
+ #detailDrawer.cr-v19-panel .cr-v19-badge{height:46px}
+ #detailDrawer.cr-v19-panel .cr-v19-badge-label{height:21px;font-size:10px}
+ #detailDrawer.cr-v19-panel .cr-v19-badge-value{font-size:13px;padding-top:2px}
+ #detailDrawer.cr-v19-panel .cr-v19-paper{padding:7px 5px 31px;min-height:250px;border-width:3px}
+ #detailDrawer.cr-v19-panel .cr-game-stats{gap:4px!important}
+ #detailDrawer.cr-v19-panel .cr-game-stat{height:43px!important;min-height:43px!important;grid-template-columns:28px minmax(0,1fr)!important;gap:0 4px!important}
+ #detailDrawer.cr-v19-panel .cr-v19-iconbox{height:29px;width:28px;border-width:1px}
+ #detailDrawer.cr-v19-panel .cr-v19-iconbox svg{width:24px;height:24px}
+ #detailDrawer.cr-v19-panel .cr-game-stat span:not(.cr-v19-iconbox):not(.cr-v19-stattext){font-size:9.5px!important}
+ #detailDrawer.cr-v19-panel .cr-game-stat strong{font-size:15px!important;line-height:1.1!important}
+ #detailDrawer.cr-v19-panel .cr-v19-controls{margin-top:10px}
+ #detailDrawer.cr-v19-panel .cr-v19-action{font-size:11px;min-height:34px}
+}
+@media(max-width:360px){
+ .cr-gallery{gap:6px}
+ .cr-card-actions button{font-size:9px!important}
+ #detailDrawer.cr-v19-panel .cr-game-hero{grid-template-columns:86px minmax(0,1fr)!important;gap:10px!important;min-height:128px!important}
+ #detailDrawer.cr-v19-panel .cr-game-picture{width:86px!important;height:119px!important}
+ #detailDrawer.cr-v19-panel .cr-v19-badges{padding-top:4px}
+ #detailDrawer.cr-v19-panel .cr-game-stat{grid-template-columns:25px minmax(0,1fr)!important;gap:0 3px!important}
+ #detailDrawer.cr-v19-panel .cr-v19-iconbox{width:25px;height:27px}
+ #detailDrawer.cr-v19-panel .cr-game-stat strong{font-size:13.5px!important}
+}
+@media(prefers-reduced-motion:reduce){.cr-card-tile{transition:none!important}#detailDrawer.cr-v19-panel .cr-v19-pip:before{transition:none!important}}
