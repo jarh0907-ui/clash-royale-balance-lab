@@ -613,6 +613,7 @@ render();
       const pips=document.createElement('div');pips.className='cr-game-pips';pips.setAttribute('aria-hidden','true');
       pips.innerHTML='<span></span><span></span>';
       perf.insertAdjacentElement('afterend',pips);
+      if(stats)nav.insertAdjacentElement('afterend',stats);
       panel.querySelectorAll('.cr-game-stat').forEach(card=>{
          const label=card.querySelector('span')?.textContent?.trim();
          card.dataset.icon=iconMap[label]||'✦';
@@ -641,6 +642,17 @@ render();
     });
     const watch=new MutationObserver(()=>{
       if(back.hidden)return;
+      const updatedStat=panel.querySelector('.cr-stat-shell');
+      if(updatedStat&&!updatedStat.dataset.crV18Pane){
+        updatedStat.dataset.crV18Pane='info';
+        updatedStat.hidden=active!=='info';
+        const tabs=panel.querySelector('.cr-game-tabs');
+        if(tabs)tabs.insertAdjacentElement('afterend',updatedStat);
+        const description=panel.querySelector('.cr-game-info .cr-game-desc')?.textContent?.trim();
+        if(description&&!updatedStat.querySelector('.cr-card-description-extra')){
+          const p=document.createElement('p');p.className='cr-card-description-extra';p.textContent=description;updatedStat.append(p);
+        }
+      }
       panel.querySelectorAll('.cr-game-stat').forEach(card=>{
         if(card.dataset.icon)return;
         const label=card.querySelector('span')?.textContent?.trim();
