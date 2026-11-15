@@ -76,7 +76,196 @@
 @media(max-width:620px){.deck-choicebox{grid-template-columns:repeat(2,minmax(0,1fr));max-height:220px}.deck-choice{min-height:50px}.deck-picker-filter{grid-template-columns:1fr 1fr}.deck-picker-filter input{grid-column:span 2}.deck-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.deck-summary b{font-size:19px}.deck-cards{gap:3px}.deck-cardpic .avatar{border-radius:5px}.deck-cardpic .mini-cost{width:14px;height:14px;font-size:9px}.deck-entry{padding:13px}.deck-smallname{font-size:8px}.deck-detail{margin-top:2px}.deck-selected{gap:5px}.deck-pick{font-size:11px}}
 </style>
 <link rel="stylesheet" href="./assets/card-ui-v16.css?v=1.6">
-<link rel="stylesheet" href="./assets/card-popup-v17.css?v=1.7">
+
+<style id="cr-popup-v18-styles">
+
+/* v1.8 card information popup — inlined to avoid external file/cache failures */
+#detailBackdrop.cr-game-overlay {
+  position:fixed!important;inset:0!important;z-index:5000!important;
+  display:grid!important;place-items:center!important;justify-content:center!important;align-items:center!important;
+  padding:12px!important;background:rgba(4,9,23,.84)!important;backdrop-filter:blur(7px)!important;
+}
+#detailBackdrop.cr-game-overlay[hidden] {display:none!important}
+#detailDrawer.cr-game-popup {
+  position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  transform:none!important;float:none!important;margin:auto!important;
+  width:min(590px,calc(100vw - 24px))!important;min-width:0!important;
+  height:auto!important;max-height:calc(100dvh - 24px)!important;
+  overflow-y:auto!important;overscroll-behavior:contain;box-sizing:border-box!important;
+  padding:0 15px 16px!important;border-radius:16px!important;
+  border:3px solid #6b86bc!important;border-top:3px solid #85b7e8!important;
+  background:linear-gradient(180deg,#2773bb 0px,#284d91 47px,#222f77 85px,#192f60 86px,#192f60 100%)!important;
+  box-shadow:0 0 0 2px #121b43,0 0 0 4px #8299d7,0 15px 65px #000e,inset 0 4px 3px #b4e8ff6b!important;
+  scrollbar-color:#8baff4 #1e3467;scrollbar-width:thin;
+  color:#f8f9ff!important;animation:crPopV18 .18s ease-out both;
+}
+@keyframes crPopV18{from{opacity:.5;scale:.95}to{opacity:1;scale:1}}
+#detailDrawer.cr-game-popup .drawer-top {
+  position:sticky;top:0;z-index:4;margin:0 -6px 0;padding:6px 3px 5px!important;
+  display:flex!important;justify-content:flex-end!important;align-items:center!important;
+  background:linear-gradient(180deg,#2773bb,#284d91)!important;min-height:41px!important;border:0!important;
+}
+#detailDrawer.cr-game-popup .drawer-top .eyebrow{display:none!important}
+#detailDrawer.cr-game-popup .drawer-top [data-action="close-detail"] {
+  display:grid!important;place-items:center!important;width:35px;height:34px;
+  padding:0!important;font-size:22px!important;font-weight:1000!important;line-height:1!important;
+  background:linear-gradient(#f97567,#bb282a)!important;border:2px solid #ffe0c5!important;border-radius:7px!important;
+  color:#fff!important;box-shadow:0 3px 0 #73151f,inset 0 2px #ff9e91,0 0 0 2px #a42d37!important;text-shadow:0 2px #8f2428;
+}
+#detailDrawer.cr-game-popup .cr-game-hero {
+  display:grid!important;grid-template-columns:128px minmax(0,1fr)!important;
+  align-items:center!important;gap:14px!important;
+  background:transparent!important;box-shadow:none!important;border:0!important;
+  margin:0 0 8px!important;padding:3px 7px 0!important;
+}
+#detailDrawer.cr-game-popup .cr-game-picture {
+  width:128px!important;max-width:100%;height:176px!important;
+  aspect-ratio:auto!important;border:3px solid #bdd8ff!important;border-radius:7px!important;
+  box-shadow:0 0 0 2px #173a6e,0 4px 0 #0d2450,0 7px 13px #0009!important;overflow:hidden!important;
+}
+#detailDrawer.cr-game-popup .cr-game-picture img {width:100%!important;height:100%!important;object-fit:contain!important}
+#detailDrawer.cr-game-popup .cr-game-picture .cr-art-cost {
+  width:34px;height:34px;top:-1px;left:-1px;font-size:19px;
+  background:linear-gradient(#ba58fa,#873dd0,#5c2da8)!important;
+  border:2px solid #eeaffe!important;border-radius:50%!important;
+  box-shadow:0 2px 2px #402159!important
+}
+#detailDrawer.cr-game-popup .cr-game-info{min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:center;justify-content:center}
+#detailDrawer.cr-game-popup .cr-game-info h2{
+  order:1!important;color:#fff!important;font-size:clamp(18px,3.9vw,27px)!important;
+  font-weight:1000!important;line-height:1.2!important;margin:0 0 3px!important;
+  -webkit-text-stroke:.35px #161c42;text-shadow:1px 2px 0 #071e51,0 3px 2px #081845!important;
+  word-break:keep-all!important;
+}
+#detailDrawer.cr-game-popup .cr-game-info .cr-level {
+  order:2!important;margin:0 0 14px!important;font-size:15px!important;font-weight:1000!important;
+  color:#e2edff!important;text-shadow:0 2px 1px #1b2865!important;
+}
+#detailDrawer.cr-game-popup .cr-game-info .cr-meta{display:none!important}
+#detailDrawer.cr-game-popup .cr-game-info .cr-game-badges{
+  order:3!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px!important;width:100%;
+}
+#detailDrawer.cr-game-popup .cr-game-badge{min-width:0;border-radius:7px;overflow:hidden;
+  background:linear-gradient(#152a58 10%,#101e44 100%);box-shadow:0 2px 0 #0d1841;
+  border:1px solid #546894}
+#detailDrawer.cr-game-popup .cr-game-badge em{
+  display:block;font-style:normal;font-size:10px;line-height:1.2;
+  font-weight:900;background:linear-gradient(#ffb048,#e47628);color:#6e280e;
+  padding:5px 3px 3px;box-shadow:inset 0 1px #ffdb9d;
+}
+#detailDrawer.cr-game-popup .cr-game-badge strong{
+  display:block;font-weight:1000;color:#fff2ad;font-size:12px;padding:6px 2px 7px;
+  text-shadow:0 1px 1px #111740;overflow-wrap:anywhere;
+}
+#detailDrawer.cr-game-popup .cr-game-info .cr-game-desc,
+#detailDrawer.cr-game-popup .cr-game-info .cr-game-note{display:none!important}
+#detailDrawer.cr-game-popup .cr-game-tabs{
+  display:flex!important;align-items:center;justify-content:center;gap:3px;
+  margin:9px 0 0;padding:0 10px;
+}
+#detailDrawer.cr-game-popup .cr-game-tabs button{
+  min-width:90px;flex:1;max-width:230px;
+  cursor:pointer;padding:9px 8px;border:2px solid #6b7bb2;border-bottom:0!important;
+  border-radius:7px 7px 0 0;
+  background:linear-gradient(#6d7aac,#4e5b90)!important;color:#dee5fc!important;
+  text-shadow:0 1px 0 #39437d;font-size:13px;font-weight:950;
+}
+#detailDrawer.cr-game-popup .cr-game-tabs button[aria-selected="true"]{
+  background:linear-gradient(#eef8ff,#c6d8ea)!important;
+  color:#28365a!important;text-shadow:0 1px #fff!important;
+  box-shadow:inset 0 2px #fff;
+}
+#detailDrawer.cr-game-popup .cr-stat-shell{
+  padding:8px 8px 18px!important;margin:0!important;min-height:235px;
+  border:5px solid #c8e1f5!important;border-radius:13px!important;
+  background:linear-gradient(180deg,#e2edf9,#d7e6f5)!important;
+  box-shadow:inset 0 0 0 2px #eff8ff,0 4px 1px #071c4b!important;color:#213859!important;
+}
+#detailDrawer.cr-game-popup .cr-data-head{padding:3px 4px 6px;margin-bottom:3px!important;gap:8px}
+#detailDrawer.cr-game-popup .cr-data-head h3{display:none!important}
+#detailDrawer.cr-game-popup .cr-data-stamp{font-size:10px!important;color:#647a98!important;text-align:center!important;width:100%}
+#detailDrawer.cr-game-popup .cr-game-stats{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px 6px!important}
+#detailDrawer.cr-game-popup .cr-game-stat{
+  min-height:47px!important;display:grid!important;grid-template-columns:29px minmax(0,1fr)!important;
+  align-content:center!important;gap:1px 6px!important;padding:5px!important;
+  background:linear-gradient(#dce8f8,#c7d8ee)!important;
+  border:1px solid #b5c9e2!important;border-radius:7px!important;
+  box-shadow:inset 0 1px #faffff,0 1px #b4c5de!important;
+}
+#detailDrawer.cr-game-popup .cr-game-stat:before{
+  content:attr(data-icon);grid-row:1/3;display:grid;place-items:center;
+  width:28px;height:31px;border-radius:4px;
+  background:linear-gradient(#1f4773,#172a50);border:1px solid #6b83a7;
+  color:white;font-size:17px;align-self:center;
+}
+#detailDrawer.cr-game-popup .cr-game-stat span{
+  display:block!important;grid-column:2;font-size:10px!important;
+  font-weight:900!important;color:#445571!important;line-height:1.15;
+}
+#detailDrawer.cr-game-popup .cr-game-stat strong{
+  grid-column:2!important;display:block!important;color:#222b45!important;
+  font-size:15px!important;line-height:1.1!important;margin:0!important;
+  font-weight:1000!important;text-shadow:0 1px #fff;
+}
+#detailDrawer.cr-game-popup .cr-game-stat small{font-size:9px;color:#25375b}
+#detailDrawer.cr-game-popup .cr-no-data{background:#d3e2f3;color:#475979}
+#detailDrawer.cr-game-popup .cr-stat-citation{margin:12px 4px 0!important;font-size:10px!important;color:#50688c!important}
+#detailDrawer.cr-game-popup .cr-stat-citation a{color:#214d8f!important}
+#detailDrawer.cr-game-popup .cr-card-description-extra{
+  font-size:11px;color:#3f5678;line-height:1.4;margin:12px 4px 0;border-top:1px solid #bdcfe4;padding-top:8px
+}
+#detailDrawer.cr-game-popup .cr-performance-panel{
+  border:5px solid #ccdef3;border-radius:12px;background:#e0ebf8;color:#213859;padding:12px;
+  max-height:45vh;overflow:auto;
+}
+#detailDrawer.cr-game-popup .cr-performance-panel .drawer-section{border-color:#acbdd1}
+#detailDrawer.cr-game-popup .cr-performance-panel .drawer-section h3{color:#283b62}
+#detailDrawer.cr-game-popup .cr-performance-panel .tip{color:#435876}
+#detailDrawer.cr-game-popup .cr-performance-panel .small{color:#445573}
+#detailDrawer.cr-game-popup .cr-performance-panel .rate-tile{background:#c7d8ee;color:#1c355a}
+#detailDrawer.cr-game-popup .cr-performance-panel .rate-tile label{color:#395c84}
+#detailDrawer.cr-game-popup .cr-performance-panel .rate-tile strong{color:#1a3669}
+#detailDrawer.cr-game-popup [data-cr-v18-pane][hidden]{display:none!important}
+#detailDrawer.cr-game-popup .cr-game-pips{display:flex;gap:8px;justify-content:center;align-items:center;padding:10px 0 2px}
+#detailDrawer.cr-game-popup .cr-game-pips span{display:block;border-radius:100%;height:10px;width:10px;background:#677ea9;border:2px solid #31477d}
+#detailDrawer.cr-game-popup .cr-game-pips span.on{height:15px;width:15px;background:linear-gradient(#ffe982,#ffba1d);border:2px solid #8d651b;box-shadow:0 0 0 1px #f6d874}
+#detailDrawer.cr-game-popup .drawer-actions{
+  margin:10px 0 0!important;display:flex!important;justify-content:center!important;gap:6px!important;flex-wrap:wrap!important
+}
+#detailDrawer.cr-game-popup .drawer-actions button{font-size:11px!important;padding:8px 11px!important}
+#detailDrawer.cr-game-popup button:focus-visible{outline:3px solid #ffff9f;outline-offset:3px}
+@media(max-width:600px){
+ #detailBackdrop.cr-game-overlay{padding:7px!important}
+ #detailDrawer.cr-game-popup{width:calc(100vw - 14px)!important;max-height:calc(100dvh - 14px)!important;
+   padding:0 9px 10px!important;border-radius:12px!important;border-width:2px!important}
+ #detailDrawer.cr-game-popup .drawer-top{min-height:35px!important;padding:4px!important}
+ #detailDrawer.cr-game-popup .cr-game-hero{grid-template-columns:92px minmax(0,1fr)!important;gap:9px!important;padding:0 2px!important}
+ #detailDrawer.cr-game-popup .cr-game-picture{width:92px!important;height:130px!important}
+ #detailDrawer.cr-game-popup .cr-game-info h2{font-size:17px!important}
+ #detailDrawer.cr-game-popup .cr-game-info .cr-level{font-size:12px!important;margin-bottom:8px!important}
+ #detailDrawer.cr-game-popup .cr-game-badge em{font-size:9px;padding:3px 2px}
+ #detailDrawer.cr-game-popup .cr-game-badge strong{font-size:10px;padding:5px 2px}
+ #detailDrawer.cr-game-popup .cr-game-badges{gap:4px!important}
+ #detailDrawer.cr-game-popup .cr-game-tabs{margin-top:8px;padding:0 4px}
+ #detailDrawer.cr-game-popup .cr-game-tabs button{padding:7px;font-size:11px}
+ #detailDrawer.cr-game-popup .cr-stat-shell{padding:5px!important;border-width:3px!important;min-height:160px}
+ #detailDrawer.cr-game-popup .cr-game-stats{gap:4px!important}
+ #detailDrawer.cr-game-popup .cr-game-stat{grid-template-columns:23px minmax(0,1fr)!important;min-height:44px!important;padding:3px!important;gap:1px 4px!important}
+ #detailDrawer.cr-game-popup .cr-game-stat:before{width:22px;height:26px;font-size:14px}
+ #detailDrawer.cr-game-popup .cr-game-stat span{font-size:9px!important}
+ #detailDrawer.cr-game-popup .cr-game-stat strong{font-size:13px!important}
+ #detailDrawer.cr-game-popup .cr-data-stamp{font-size:9px!important}
+ #detailDrawer.cr-game-popup .drawer-actions button{font-size:10px!important;padding:7px!important}
+}
+@media(max-width:360px){
+ #detailDrawer.cr-game-popup .cr-game-hero{grid-template-columns:78px minmax(0,1fr)!important}
+ #detailDrawer.cr-game-popup .cr-game-picture{width:78px!important;height:111px!important}
+ #detailDrawer.cr-game-popup .cr-game-info h2{font-size:15px!important}
+ #detailDrawer.cr-game-popup .cr-game-stat strong{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){#detailDrawer.cr-game-popup{animation:none!important}}
+
+</style>
 </head>
 <body>
 <div class="shell">
@@ -94,7 +283,7 @@
 </main>
 </div>
 <nav id="bottomNav" class="bottomnav" aria-label="모바일 메뉴"></nav>
-<div id="detailBackdrop" class="drawer-backdrop" hidden><div id="detailDrawer" class="drawer" role="dialog" aria-modal="true" aria-label="카드 상세 보기"></div></div>
+<div id="detailBackdrop" class="cr-game-overlay" hidden><div id="detailDrawer" class="cr-game-popup" role="dialog" aria-modal="true" aria-label="카드 정보"></div></div>
 <div id="toast" class="toast" role="status" hidden></div>
 <div id="imageDiagnostic" class="diag-backdrop" hidden>
   <section class="diag-panel" role="dialog" aria-modal="true" aria-labelledby="diagTitle">
@@ -372,5 +561,102 @@ assignCardImagesInline();
 render();
 </script>
 <script src="./assets/card-ui-v16.js?v=1.6" defer></script>
-<script src="./assets/card-popup-v17.js?v=1.7" defer></script>
+
+<script id="cr-popup-v18-script">
+
+(function(){
+  function install(){
+    const back=document.getElementById('detailBackdrop');
+    const panel=document.getElementById('detailDrawer');
+    if(!back||!panel||typeof window.openDetail!=='function')return;
+    const openPrevious=window.openDetail;
+    let active='info';
+    const iconMap={'체력':'❤️','피해량':'💥','초당 피해량':'🔥','공격 속도':'⚔️','공격 사거리':'🏹',
+       '공격 대상':'🎯','이동 속도':'💨','배치 개체 수':'👥','보호막 체력':'🛡️',
+       '지속 시간':'⏱️','효과 범위':'🌪️','타워 피해량':'🏰','광역 피해 범위':'💥',
+       '사망 피해':'💀','진화 주기':'💜','배치 시간':'⌛','기절 지속':'⚡'};
+    function formatDetail(){
+      const header=panel.querySelector('.drawer-top');
+      const hero=panel.querySelector('.cr-game-hero');
+      const stats=panel.querySelector('.cr-stat-shell');
+      if(!header||!hero)return;
+      header.querySelector('[data-action="close-detail"]')?.setAttribute('aria-label','카드 정보창 닫기');
+      const info=hero.querySelector('.cr-game-info');
+      if(info&&!info.querySelector('.cr-game-badges')){
+        const meta=[...info.querySelectorAll('.cr-meta span')].map(n=>n.textContent.trim());
+        const badges=document.createElement('div');
+        badges.className='cr-game-badges';
+        const pair=[['희귀도',meta[2]||'미확인'],['유형',meta[0]||'카드']];
+        pair.forEach(([k,v])=>{const tile=document.createElement('div');tile.className='cr-game-badge';
+            const key=document.createElement('em');key.textContent=k;
+            const value=document.createElement('strong');value.textContent=v;
+            tile.append(key,value);badges.append(tile);});
+        info.append(badges);
+      }
+      let nav=document.createElement('div');nav.className='cr-game-tabs';nav.setAttribute('role','tablist');nav.setAttribute('aria-label','카드 상세 메뉴');
+      [['info','정보'],['performance','실전 통계 · 밸런스']].forEach(([id,title])=>{
+        const b=document.createElement('button');b.type='button';b.textContent=title;b.dataset.crV18Tab=id;b.setAttribute('role','tab');b.setAttribute('aria-selected','false');nav.append(b);
+      });
+      hero.insertAdjacentElement('afterend',nav);
+      const description=info?.querySelector('.cr-game-desc')?.textContent?.trim()||'';
+      const oldPanes=[...panel.children].filter(n=>n.classList.contains('score-result')||n.classList.contains('drawer-section'));
+      const perf=document.createElement('section');perf.className='cr-performance-panel';perf.dataset.crV18Pane='performance';
+      oldPanes.forEach(el=>perf.append(el));
+      if(stats){
+        stats.dataset.crV18Pane='info';
+        const oldNote=stats.querySelector('.cr-card-description-extra');if(oldNote)oldNote.remove();
+        if(description){
+          const p=document.createElement('p');p.className='cr-card-description-extra';p.textContent=description;stats.append(p);
+        }
+      }
+      nav.insertAdjacentElement('afterend',perf);
+      const pips=document.createElement('div');pips.className='cr-game-pips';pips.setAttribute('aria-hidden','true');
+      pips.innerHTML='<span></span><span></span>';
+      perf.insertAdjacentElement('afterend',pips);
+      panel.querySelectorAll('.cr-game-stat').forEach(card=>{
+         const label=card.querySelector('span')?.textContent?.trim();
+         card.dataset.icon=iconMap[label]||'✦';
+      });
+      if(!stats){const empty=document.createElement('div');empty.className='cr-stat-shell';empty.dataset.crV18Pane='info';
+        empty.innerHTML='<div class="cr-no-data">이 카드의 전투 능력치는 아직 확보되지 않았습니다.</div>';nav.insertAdjacentElement('afterend',empty);}
+      active='info';
+      select(active);
+      panel.scrollTop=0;
+      panel.querySelector('.drawer-top [data-action="close-detail"]')?.focus({preventScroll:true});
+    }
+    function select(next){
+      active=next==='performance'?'performance':'info';
+      panel.querySelectorAll('[data-cr-v18-pane]').forEach(n=>{n.hidden=n.dataset.crV18Pane!==active;});
+      panel.querySelectorAll('[data-cr-v18-tab]').forEach(n=>{n.setAttribute('aria-selected',String(n.dataset.crV18Tab===active));});
+      panel.querySelectorAll('.cr-game-pips span').forEach((n,i)=>n.classList.toggle('on',i===(active==='info'?0:1)));
+      panel.scrollTop=0;
+    }
+    back.className='cr-game-overlay';
+    panel.className='cr-game-popup';
+    panel.setAttribute('aria-label','클래시 로얄 카드 정보');
+    window.openDetail=function(name){openPrevious(name);formatDetail();};
+    panel.addEventListener('click',function(e){
+      const btn=e.target.closest('[data-cr-v18-tab]');
+      if(!btn)return;e.preventDefault();e.stopPropagation();select(btn.dataset.crV18Tab);
+    });
+    const watch=new MutationObserver(()=>{
+      if(back.hidden)return;
+      panel.querySelectorAll('.cr-game-stat').forEach(card=>{
+        if(card.dataset.icon)return;
+        const label=card.querySelector('span')?.textContent?.trim();
+        card.dataset.icon=iconMap[label]||'✦';
+      });
+    });
+    watch.observe(panel,{childList:true,subtree:true});
+    // Ensure focus remains in the visible popup, not the dimmed background.
+    panel.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+        if(e.target.closest('[data-cr-v18-tab]')){e.preventDefault();select(active==='info'?'performance':'info');panel.querySelector('[data-cr-v18-tab="'+active+'"]')?.focus();}
+      }
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+})();
+
+</script>
 </body></html>
