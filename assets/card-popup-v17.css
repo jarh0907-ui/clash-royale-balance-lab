@@ -1,0 +1,74 @@
+
+/* v1.7 — Clash Royale-inspired floating card popup, replacing the right drawer */
+#detailBackdrop.drawer-backdrop{position:fixed;inset:0;z-index:100;display:block;padding:0;background:rgba(2,7,24,.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+#detailBackdrop.drawer-backdrop[hidden]{display:none}
+#detailDrawer.drawer{
+ position:fixed;left:var(--cr-dialog-x,50vw);top:var(--cr-dialog-y,50dvh);transform:translate(-50%,-50%);
+ box-sizing:border-box;width:min(740px,calc(100vw - 28px));height:auto;max-height:min(89dvh,830px);
+ padding:0 19px 22px;overflow-y:auto;overscroll-behavior:contain;
+ border:3px solid #6182ba;border-radius:20px;
+ background:linear-gradient(180deg,#24497e 0,#152f5e 80px,#142953 81px,#15274d 100%);
+ color:#f7fbff;box-shadow:0 0 0 3px #0a1b38,0 24px 75px #000c,inset 0 2px 0 #d9e9ff5e;
+ scrollbar-width:thin;scrollbar-color:#6485ae #13294c;animation:cr-card-pop .17s cubic-bezier(.16,.85,.2,1) both;
+}
+@keyframes cr-card-pop{from{opacity:.5;scale:.965}to{opacity:1;scale:1}}
+#detailDrawer .drawer-top{position:sticky;top:0;z-index:4;min-height:48px;padding:8px 0 9px;
+ background:linear-gradient(180deg,#24497e 0%,#183866 100%);border-bottom:1px solid #5d83b6}
+#detailDrawer .drawer-top .eyebrow{font-size:11px;letter-spacing:1px;color:#ddeaff}
+#detailDrawer .drawer-top button[data-action="close-detail"]{
+ border:2px solid #ffad8d;border-radius:9px;background:linear-gradient(#ef6561,#bd292d);
+ box-shadow:0 3px 0 #79172c,inset 0 1px 0 #ffe2d3;color:#fff;text-shadow:0 1px #79242b;
+ padding:7px 11px;font-weight:900}
+#detailDrawer .cr-game-hero{margin:12px 0;border:0;background:linear-gradient(110deg,#263e70,#1b315c);
+ box-shadow:none;padding:13px;border-radius:12px;grid-template-columns:145px minmax(0,1fr)}
+#detailDrawer .cr-game-info h2{font-size:24px;letter-spacing:-.4px;color:#fff;text-shadow:0 2px 0 #0b1e3f}
+#detailDrawer .cr-game-info .cr-level{color:#ffda73;font-weight:900;text-shadow:0 1px #734e26}
+#detailDrawer .cr-game-desc{color:#dce9fc}
+#detailDrawer .cr-game-picture{border:3px solid #90aff0;box-shadow:0 4px 0 #0c1c39,0 6px 18px #0008}
+#detailDrawer .cr-modal-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:3px 0 13px}
+#detailDrawer .cr-modal-tabs button{padding:11px 10px;color:#b4c8eb;border:2px solid #4e74ab;border-radius:10px;
+ background:#15294c;font-weight:900;font-size:13px;box-shadow:inset 0 1px #ffffff10}
+#detailDrawer .cr-modal-tabs button[aria-selected="true"]{color:#12294e;background:linear-gradient(#e4edf8,#a9c4e6);
+ border-color:#d5ecff;box-shadow:0 2px 0 #6a9cb9,inset 0 1px #fff}
+#detailDrawer .cr-modal-tabs button:focus-visible{outline:3px solid #ffe27d;outline-offset:2px}
+#detailDrawer [data-cr-pane][hidden]{display:none!important}
+#detailDrawer .cr-stat-shell{margin:0 0 14px;padding:13px;border:3px solid #d7e5f7;border-radius:16px;
+ background:linear-gradient(#e7edf7,#ccd9ed);box-shadow:0 3px 0 #6381a9,inset 0 2px #fff}
+#detailDrawer .cr-data-head h3{color:#213e68;font-size:17px;text-shadow:none}
+#detailDrawer .cr-data-stamp{color:#4e6482;font-size:10px}
+#detailDrawer .cr-game-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#detailDrawer .cr-game-stat{background:linear-gradient(#cad7e9,#b9c9e0);border:1px solid #a2bad3;
+ border-radius:8px;min-height:64px;padding:7px 9px;display:flex;flex-direction:column;justify-content:center}
+#detailDrawer .cr-game-stat span{font-weight:850;color:#4a5876;font-size:11px;display:flex;align-items:center;gap:5px}
+#detailDrawer .cr-game-stat strong{font-size:20px;color:#1a2b4c;font-weight:950;letter-spacing:-.2px}
+#detailDrawer .cr-game-stat .cr-stat-icon{font-size:15px;line-height:1}
+#detailDrawer .cr-stat-citation{color:#465a77;font-size:10px}
+#detailDrawer .cr-stat-citation a{color:#21518b;font-weight:850}
+#detailDrawer .cr-no-data{background:#cfdbec;color:#344a68}
+#detailDrawer .score-result{margin:0 0 10px}
+#detailDrawer .drawer-section{margin-top:13px;padding-top:13px;border-top:1px solid #46618a}
+#detailDrawer .drawer-actions{margin:16px 0 0;justify-content:center}
+#detailDrawer .drawer-actions .btn{font-size:12px;white-space:normal;text-align:center}
+#detailDrawer button:focus-visible{outline:3px solid #ffe27d;outline-offset:3px}
+@media(max-width:680px){
+ #detailDrawer.drawer{width:calc(100vw - 18px);max-height:calc(100dvh - 24px);
+  border-radius:16px;padding:0 10px 20px;border-width:2px}
+ #detailDrawer .drawer-top{min-height:43px}
+ #detailDrawer .drawer-top .eyebrow{font-size:9px;letter-spacing:.6px}
+ #detailDrawer .cr-game-hero{grid-template-columns:94px minmax(0,1fr);gap:10px;margin:8px 0;padding:8px}
+ #detailDrawer .cr-game-info h2{font-size:17px}
+ #detailDrawer .cr-game-info .cr-level{font-size:11px}
+ #detailDrawer .cr-game-info .cr-meta{margin-bottom:6px}
+ #detailDrawer .cr-game-info .cr-meta span{font-size:9px;padding:2px 5px}
+ #detailDrawer .cr-game-desc{font-size:10px;line-height:1.45}
+ #detailDrawer .cr-game-note{font-size:9px}
+ #detailDrawer .cr-modal-tabs button{padding:9px 5px;font-size:12px}
+ #detailDrawer .cr-stat-shell{padding:8px}
+ #detailDrawer .cr-game-stat{min-height:54px;padding:6px 7px}
+ #detailDrawer .cr-game-stat strong{font-size:17px}
+ #detailDrawer .cr-game-stat span{font-size:10px}
+ #detailDrawer .cr-data-stamp{font-size:9px}
+ #detailDrawer .drawer-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ #detailDrawer .drawer-actions .btn:last-child{grid-column:span 2}
+}
+@media(prefers-reduced-motion:reduce){#detailDrawer.drawer{animation:none}}
