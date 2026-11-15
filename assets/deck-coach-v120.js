@@ -13,7 +13,9 @@ const SOURCES={
   season:{date:'2026-11-04',title:'11월 시즌 89 덱 유형 분석',url:'https://trophycoach.com/guides/clash-royale-meta-decks-2026'},
   report:{date:'2026-11-08',title:'11월 1~8일 주요 덱 변화',url:'https://www.clashdeckster.com/meta-report/2026-11-08'},
   november:{date:'2026-11-01',title:'11월 대표 덱 및 밸런스 해설',url:'https://timesaver.gg/blog/best-clash-royale-decks-october-2026'},
-  weekly:{date:'2026-11-01',title:'10월 26일~11월 1일 덱 기록',url:'https://royaledeck.app/meta/archive/2026-w44'}
+  weekly:{date:'2026-11-01',title:'10월 26일~11월 1일 덱 기록',url:'https://royaledeck.app/meta/archive/2026-w44'},
+  miner:{date:'2026-11-11',title:'광부 + 해골 돌격병 덱 운영',url:'https://clash.world/guides/miner-wall-breakers-deck-in-clash-royale-2-8-matchup-guide/'},
+  drill:{date:'2026-10-29',title:'고블린 드릴 카드·상성 최신 점검',url:'https://gamgem.com/clash-royale/cards/goblin-drill'}
 };
 const has=(d,id)=>!!d&&Array.isArray(d.cards)&&d.cards.some(c=>deckFamilyName(c)===id);
 const hasAny=(d,ids)=>ids.some(id=>has(d,id));
@@ -170,7 +172,7 @@ function deckProfile(d){
     combo:'상대 수비 카드가 빠짐 → 광부로 어그로 분산 → 돌격병/독으로 타워 연결.',
     reserve:'상대의 저비용 유닛이나 건물이 아직 손에 있다면 광부·돌격병을 동시에 모두 소모하지 마세요.',
     mistake:'광부를 늘 같은 위치에 보내 예측을 허용하거나 수비 손해를 보며 억지로 타워 피해를 노리지 마세요.',
-    sources:['season','november'],exact:false
+    sources:['miner','season'],exact:false
   });
   else if(has(d,'Goblin Drill'))set({
     overview:'고블린 드릴을 타워 옆으로 보내 반복 타격을 노리는 순환 공격 덱입니다.',
@@ -180,7 +182,7 @@ function deckProfile(d){
     combo:'드릴 소환 → 상대 광역 수비 사용 확인 → 다음 주기에 파이어볼로 그 유닛을 함께 맞히기.',
     reserve:'상대가 발키리·볼러를 갖고 있을 경우 드릴을 같은 자리로 반복하지 마세요.',
     mistake:'드릴과 소형 유닛을 한 주문에 소모하지 말고 수비 건물 비용을 남기세요.',
-    sources:['season'],exact:false
+    sources:['drill','season'],exact:false
   });
   else if(has(d,'Royal Giant'))set({
     overview:'낚시꾼으로 수비 유닛의 위치를 바꾸고 로얄 자이언트를 강 앞에 투입해 타워를 때리는 컨트롤 덱입니다.',
@@ -276,6 +278,20 @@ function counterEvidence(victim,foe){
     const spells=['The Log','Barbarian Barrel','Arrows','Zap','Snowball','Giant Snowball'].filter(x=>has(foe,x));
     if(spells.length) add(spells.length>=2?2.6:1.35,spells.map(x=>pretty(foe,x)).join('·')+' '+(spells.length>=2?'등 여러 소형 마법이 고블린 통을 번갈아 처리해 미끼 효과를 줄입니다.':'으로 고블린 통에 안정적으로 대응할 수 있습니다.'),'상대 주문 하나만 뺀 상태에서 통을 쓰지 말고, 보유한 소형 주문 수와 순환 순서를 함께 확인하세요.');
   }
+
+  if(has(victim,'Miner')){
+    if(has(foe,'Tornado'))add(1.7,'토네이도로 광부를 킹 타워 쪽으로 당겨 활성화를 노리거나 타워 접근 피해를 줄일 수 있습니다.','광부 착지 위치를 바꾸고 상대 토네이도 순환을 계산하며 투입하세요.');
+    if(hasAny(foe,['Valkyrie','Mini P.E.K.K.A','Electro Wizard']))add(1.2,'발키리·미니 페카·일렉트로 마법사가 광부를 처리한 뒤 역공 전력으로 남을 수 있습니다.','광부 혼자 피해를 책임지게 하지 말고 돌격병이나 지원 카드로 공격 대상을 나누세요.');
+  }
+  if(has(victim,'Wall Breakers')){
+    const stoppers=['Bomb Tower','Valkyrie','Cannon','Goblin Cage'].filter(n=>has(foe,n));
+    if(stoppers.length)add(stoppers.length>=2?2.4:1.7,stoppers.map(x=>pretty(foe,x)).join('·')+'이 해골 돌격병을 끌어오거나 광역 피해로 연결을 차단할 수 있습니다.','돌격병을 분할해서 보내거나 건물이 방금 소모된 시점에 다른 라인으로 보내세요.');
+  }
+  if(has(victim,'Goblin Drill')){
+    const sweep=['Valkyrie','Bowler','Executioner','Firecracker'].filter(n=>has(foe,n));
+    if(sweep.length)add(sweep.length>=2?2.6:2.05,sweep.map(x=>pretty(foe,x)).join('·')+'의 광역 피해가 드릴에서 나오는 고블린을 여러 차례 제거합니다.','상대 광역 유닛을 다른 곳에 먼저 쓰게 한 뒤 드릴을 놓고 위치를 변경하세요.');
+    if(has(foe,'Poison'))add(1.9,'독이 드릴 주위에 지속적으로 피해를 주어 고블린의 누적 타워 피해를 줄일 수 있습니다.','독을 먼저 빼낸 뒤 다음 드릴 주기를 노리세요.');
+  }
   if(has(victim,'Graveyard')){
     if(has(foe,'Poison'))add(2.9,'독 마법이 무덤의 해골이 생기는 영역을 계속 견제해 누적 피해를 줄입니다.','상대 독이 다른 수비에 사용된 직후 무덤을 사용하거나 다른 라인에 압박을 먼저 걸어 보세요.');
     if(hasAny(foe,['Valkyrie','Bowler','Baby Dragon']))add(1.25,'발키리·볼러·베이비 드래곤 같은 범위 공격 유닛이 무덤 해골을 정리합니다.','탱커로 범위 공격 유닛을 다른 위치로 유도하고 독으로 지원하세요.');
@@ -310,7 +326,7 @@ function counterEvidence(victim,foe){
   }
   if(has(victim,'P.E.K.K.A')&&hasAny(foe,['Balloon','Lava Hound'])){
     const airDefense=['Electro Wizard','Magic Archer','Phoenix','Musketeer','Hunter','Archers'].filter(c=>has(victim,c));
-    if(airDefense.length<=2)add(2,'공중 덱은 페카가 타격할 수 없는 비행 유닛을 공격하고 제한된 대공 수비를 강요합니다.','일렉트로 마법사·마법 궁수의 대공 공격을 보존하고 반대 라인에 배틀 램으로 압박하세요.');
+    if(airDefense.length<=2)add(3.2,'공중 덱은 페카가 타격할 수 없는 비행 유닛을 공격하고 제한된 대공 수비를 강요합니다.','일렉트로 마법사·마법 궁수의 대공 공격을 보존하고 반대 라인에 배틀 램으로 압박하세요.');
   }
   return r;
 }
