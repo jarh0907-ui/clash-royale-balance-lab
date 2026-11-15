@@ -1,0 +1,58 @@
+
+/* v1.6: large card portraits and game-inspired information panel */
+.cr-view-toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}
+.cr-view-toggle small{color:#a3b9d6;font-size:12px}
+.cr-view-buttons{display:flex;gap:6px;padding:4px;background:#101d34;border:1px solid #2a4263;border-radius:12px}
+.cr-view-buttons button{border:0;background:transparent;color:#a9bbd3;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:800}
+.cr-view-buttons button[aria-pressed="true"]{background:#28567d;color:#f0fbff;box-shadow:inset 0 0 0 1px #4585a7}
+.cr-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:15px;align-items:start}
+.cr-card-tile{min-width:0;border:1px solid #304867;border-radius:15px;background:linear-gradient(180deg,#1b2c4a,#111d32);overflow:hidden;box-shadow:0 10px 25px #0002;transition:transform .15s,border-color .15s}
+.cr-card-tile:hover{transform:translateY(-2px);border-color:#79bfd9}
+.cr-card-tile:focus-within{border-color:#8be5f2;box-shadow:0 0 0 2px #2d648d}
+.cr-card-art{display:block;width:100%;border:none;background:none;padding:0;color:#fff;text-align:center}
+.cr-art-frame{position:relative;display:block;aspect-ratio:2/3;overflow:hidden;background:radial-gradient(ellipse at 45% 25%,#40638b 0%,#162b50 55%,#132035 100%);border-bottom:2px solid #3b587b}
+.cr-card-tile[data-form="진화"] .cr-art-frame{background:radial-gradient(ellipse at 40% 30%,#715c9e,#2a2658 67%,#191c37)}
+.cr-card-tile[data-form="영웅"] .cr-art-frame{background:radial-gradient(ellipse at 40% 25%,#80632e,#3b2d27 65%,#251b24)}
+.cr-card-tile[data-form="챔피언"] .cr-art-frame{background:radial-gradient(ellipse at 40% 25%,#8c7548,#3e3324 65%,#291f1d)}
+.cr-art-frame img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 8px 8px #0004);transition:transform .18s}
+.cr-card-art:hover .cr-art-frame img{transform:scale(1.045)}
+.cr-art-fallback{display:grid;place-items:center;height:100%;font-size:42px;color:#a0bedc}
+.cr-art-cost{position:absolute;top:6px;left:6px;display:grid;place-items:center;border:2px solid #c9a6fa;background:linear-gradient(#965add,#59379c);border-radius:50%;height:34px;min-width:34px;padding:0 4px;font-size:19px;font-weight:950;text-shadow:0 2px 2px #0009;box-shadow:0 2px 6px #0009}
+.cr-art-variant{position:absolute;right:5px;top:6px;font-size:10px;font-weight:900;border-radius:6px;padding:3px 5px;background:#5c39a7;color:white}
+.cr-card-tile[data-form="영웅"] .cr-art-variant{background:#ba8a26;color:#20150d}
+.cr-art-name{display:flex;align-items:center;justify-content:center;min-height:50px;padding:8px 6px 6px;font-size:13px;font-weight:900;line-height:1.25;text-wrap:balance;word-break:keep-all}
+.cr-card-caption{display:block;font-size:10px;color:#a6b9d5;padding:0 6px 8px}
+.cr-card-quick{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:9px 7px 7px;border-top:1px solid #273b57}
+.cr-card-quick div{background:#10233c;border-radius:7px;padding:5px 3px;text-align:center;font-size:11px}
+.cr-card-quick small{display:block;color:#91a8ca;font-size:9px;font-weight:500}
+.cr-card-quick strong{font-weight:900;color:#e5efff}
+.cr-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 7px 9px}
+.cr-card-actions button{padding:7px 2px;font-weight:770;font-size:11px;border:1px solid #3a577c;border-radius:7px;background:#213d60}
+.cr-card-actions button:hover{background:#2b567d}
+.cr-game-hero{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:center;margin:16px 0 18px;padding:15px;border-radius:19px;border:2px solid #607e9b;background:linear-gradient(135deg,#264771,#1c2e4d 55%,#17253d);box-shadow:inset 0 2px 0 #d1ecff15}
+.cr-game-picture{aspect-ratio:2/3;position:relative;background:radial-gradient(#526a94,#122c4e);border:3px solid #89abc9;border-radius:12px;overflow:hidden;display:grid;place-items:center}
+.cr-game-picture img{display:block;height:100%;width:100%;object-fit:contain;filter:drop-shadow(0 6px 9px #0008)}
+.cr-game-picture[data-form="진화"]{border-color:#b588e9;background:radial-gradient(#765dac,#27254f)}
+.cr-game-picture[data-form="영웅"]{border-color:#ecbc5c;background:radial-gradient(#987034,#342b34)}
+.cr-game-picture .cr-art-cost{top:4px;left:4px}
+.cr-game-info h2{font-size:23px;word-break:keep-all;margin:0 0 9px}
+.cr-game-info .cr-meta{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px}
+.cr-meta span{font-size:11px;font-weight:800;border:1px solid #507096;background:#142740;color:#d9eaff;padding:3px 7px;border-radius:7px}
+.cr-level{font-weight:900;color:#ffdc8d;font-size:12px;margin-bottom:7px}
+.cr-game-desc{font-size:12px;color:#e1ebfa;line-height:1.65;word-break:keep-all}
+.cr-game-note{font-size:11px;color:#a9bad1;margin-top:7px}
+.cr-data-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}
+.cr-data-head h3{margin:0;font-size:17px}
+.cr-data-stamp{font-size:10px;color:#d8c597;text-align:right}
+.cr-stat-shell{margin:0 0 14px;background:linear-gradient(180deg,#203956,#132740);border:1px solid #4c7395;border-radius:15px;padding:16px}
+.cr-game-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cr-game-stat{border:1px solid #3d5d7e;border-radius:10px;padding:9px 11px;min-width:0;background:#142d4b}
+.cr-game-stat span{display:block;color:#a8bbd2;font-size:11px;font-weight:650;line-height:1.35}
+.cr-game-stat strong{display:block;color:#fff;font-size:20px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;margin-top:2px}
+.cr-game-stat small{font-size:11px;color:#bad7f2}
+.cr-no-data{padding:17px 12px;color:#aec6dc;line-height:1.65;font-size:12px;background:#14263d;border-radius:9px}
+.cr-stat-citation{margin-top:10px;font-size:11px;color:#a3b8d1;line-height:1.5}
+.cr-stat-citation a{color:#9adeff}
+@media(max-width:860px){.cr-gallery{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:11px}}
+@media(max-width:600px){.cr-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.cr-card-tile{border-radius:10px}.cr-art-name{font-size:11px;min-height:48px;padding:7px 3px 5px}.cr-card-caption{font-size:9px;padding:0 3px 7px}.cr-art-cost{height:26px;min-width:26px;font-size:14px;top:3px;left:3px;border-width:1px}.cr-art-variant{top:3px;right:3px;font-size:8px;padding:2px}.cr-card-quick{grid-template-columns:1fr;gap:3px;padding:6px 4px}.cr-card-quick div{font-size:10px;padding:3px}.cr-card-actions{gap:3px;padding:0 4px 5px}.cr-card-actions button{font-size:10px;padding:6px 1px}.cr-game-hero{grid-template-columns:114px minmax(0,1fr);gap:10px;padding:10px;border-radius:13px}.cr-game-info h2{font-size:18px}.cr-game-desc{font-size:11px}.cr-stat-shell{padding:12px}.cr-game-stat{padding:8px}.cr-game-stat strong{font-size:18px}}
+@media(max-width:390px){.cr-gallery{gap:6px}.cr-game-hero{grid-template-columns:100px minmax(0,1fr)}.cr-game-info h2{font-size:16px}.cr-game-stats{gap:6px}.cr-game-stat{padding:7px}.cr-game-stat strong{font-size:16px}}
